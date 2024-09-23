@@ -1,5 +1,9 @@
 # react-coding
 
+# Toggle
+# TODO
+# Simple Form
+
 # LocalStorage
 
   // Load TODOs from local storage on app startup
