@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 const Form = () => {
-    const [input, setInput] = useState([
+    const [input, setInput] = useState(
         {
             name: "",
             password: ""
         }
-    ]);
+    );
     const handleInputChange = (e) => {
         const {name, value} = e.target;
         setInput({
@@ -44,12 +44,12 @@ const Form = () => {
             </thead>
             <tbody>
             <tr>
-                {input.map(item => 
-                item.name
-                )}
+                
                 {/* <td>{name}</td>
                 <td>{password}</td> */}
                 {/* {console.log(input)} */}
+                <td>{input.name}</td>
+                <td>{input.password}</td>
             </tr>
             </tbody>
         </table>
