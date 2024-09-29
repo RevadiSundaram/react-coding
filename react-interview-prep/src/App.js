@@ -1,5 +1,7 @@
 import './App.css';
-import Search from './Search';
+import Timer from './Timer';
+// import Delete from './Delete';
+// import Search from './Search';
 // import Form from './Form';
 // import ToDo from './ToDo';
 // import Toggle from './Toggle';
@@ -10,7 +12,9 @@ function App() {
       {/* <Toggle /> */}
       {/* <ToDo /> */}
       {/* <Form /> */}
-      <Search />
+      {/* <Search /> */}
+      {/* <Delete /> */}
+      <Timer />
     </div>
   );
 }

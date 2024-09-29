@@ -31,12 +31,10 @@ const ToDo = () => {
         if (name !== ''){
             const newTask = [...task, {name, completed: false}];
             setTask(newTask);
-        }
-        
+        }   
     }
 
     const completeTask = (index) => {
-
         const newTask = [...task];
         newTask[index].completed = true;
         setTask(newTask);
