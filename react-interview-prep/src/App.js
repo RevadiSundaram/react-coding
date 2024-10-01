@@ -1,10 +1,14 @@
 import './App.css';
-import Timer from './Timer';
+import Mock from './Dropdown.js/Mock';
+
+// import Main from './Dropdown.js/Main';
+// import Timer from './Timer';
 // import Delete from './Delete';
 // import Search from './Search';
 // import Form from './Form';
 // import ToDo from './ToDo';
 // import Toggle from './Toggle';
+// import Page from './Pagination.js/Page';
 
 function App() {
   return (
@@ -14,7 +18,10 @@ function App() {
       {/* <Form /> */}
       {/* <Search /> */}
       {/* <Delete /> */}
-      <Timer />
+      {/* <Timer /> */}
+      {/* <Page /> */}
+      {/* <Main /> */}
+      <Mock />
     </div>
   );
 }

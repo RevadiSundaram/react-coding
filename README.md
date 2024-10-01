@@ -1,11 +1,8 @@
 # react-coding
 
-# Toggle
-# TODO
-# Simple Form
-
 # LocalStorage
 
+```js
   // Load TODOs from local storage on app startup
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos'));
@@ -18,3 +15,7 @@
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
+```
+
+# var, let and const
+

@@ -29,7 +29,7 @@ const Search = () => {
     const resultData = searchAPI();
   return (
     <div>
-        <h1 className='font-bold mb-10'>Searching some name from list of Comments</h1>
+        <h1 className='font-bold mb-10'>Searching name from list of Email</h1>
         
         <form className='flex gap-5 m-10' onSubmit={(e) => e.preventDefault()}>
             <input type='text' value={searchData} className='w-[200px] border border-black p-2' placeholder='Search'
