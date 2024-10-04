@@ -1,6 +1,6 @@
 import './App.css';
-import Mock from './Dropdown.js/Mock';
-
+import Main from './DarkLight/Main';
+// import Mock from './Dropdown.js/Mock';
 // import Main from './Dropdown.js/Main';
 // import Timer from './Timer';
 // import Delete from './Delete';
@@ -21,7 +21,8 @@ function App() {
       {/* <Timer /> */}
       {/* <Page /> */}
       {/* <Main /> */}
-      <Mock />
+      {/* <Mock /> */}
+      <Main />
     </div>
   );
 }
