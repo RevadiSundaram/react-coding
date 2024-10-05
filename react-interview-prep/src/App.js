@@ -1,5 +1,6 @@
 import './App.css';
 import Main from './DarkLight/Main';
+import InterviewQues from './InterviewQues';
 // import Mock from './Dropdown.js/Mock';
 // import Main from './Dropdown.js/Main';
 // import Timer from './Timer';
@@ -22,7 +23,8 @@ function App() {
       {/* <Page /> */}
       {/* <Main /> */}
       {/* <Mock /> */}
-      <Main />
+      {/* <Main /> */}
+      <InterviewQues />
     </div>
   );
 }
