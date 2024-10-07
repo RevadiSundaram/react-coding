@@ -83,7 +83,7 @@ Output:
 -  sucess
 
 # 5.
-![alt text](image.png)
+<img src="image.png" width="600px" />
 ![alt text](<Screenshot 2024-10-06 at 3.11.24 PM.png>)
 
 Output:
@@ -112,7 +112,7 @@ const firstPromise = new Promise((resolve, reject) => {
 
 # 7. Rewrite using async/await
 
-![alt text](image-1.png)
+<img src="image-1.png" width="600px" />
 
 Ans:
 ```js
@@ -129,7 +129,7 @@ const loadJson =  async(url) =>{
 
 # 8. Write Promise Recursively
 
-![alt text](image-2.png)
+<img src="image-2.png" width="600px" />
 
 
 # LocalStorage

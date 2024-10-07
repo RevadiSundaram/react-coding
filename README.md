@@ -258,8 +258,8 @@ Error in promise - Heyy I am from Another (we rejected the second)
 - The sequence of the events occurring btw these
 
 Eg:
-![](image-3.png)
-![alt text](image-4.png)
+<img src="image-3.png" width="600px" />
+<img src="image-4.png" width="600px" />
 
 # Event Bubbling
 - Bubble goes from bottom to top
@@ -283,5 +283,5 @@ Eg:
 - Suppose we have 6 cards and a parent div
 - Instead of adding events to each card, we add the event to the parent
 
-<img src="image-5.png" width="500px" />
+<img src="image-5.png" width="600px" />
 
