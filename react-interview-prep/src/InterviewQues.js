@@ -2,34 +2,15 @@ import React from 'react'
 
 const InterviewQues = () => {
 
-    console.log("start");
-    function importantAction(message){
-        return new Promise((resolve, reject) => {
-            setTimeout( ()=>{
-                resolve(`Helloo I am ${message}`);
-            }, 1000);
-        })
-        
+    const loadJson =  async(url) =>{
+        let response = await fetch(url);
+        if (response.status == 200){
+            let json = await response.json();
+            return json;
+        }
+        throw new Error(response.status)
     }
-    function another(message){
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(`Heyyyy I am ${message} `);
-            },500)
-        })
-        
-    }
-    importantAction("Renuuu").then ((res) => {
-        console.log(res);
-        return another("Anotherrr");
-    }).then((res)=>{
-        console.log(res);
-    }).catch((err) => {
-        console.log(err);
-    });
-
-    console.log("stop");
-
+    loadJson("https.//fakeurl.com/no-such-user.json");
   return (
     <div>InterviewQues</div>
   )
