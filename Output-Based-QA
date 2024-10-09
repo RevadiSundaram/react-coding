@@ -131,20 +131,19 @@ const loadJson =  async(url) =>{
 
 <img src="image-2.png" width="600px" />
 
+# 9. Make the form triggering first, then button, then div
 
-# LocalStorage
+<img src="image-3.png" width="600px" />
+<img src="image-4.png" width="600px" />
 
-```js
-  // Load TODOs from local storage on app startup
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos'));
-    if (storedTodos) {
-      setTodos(storedTodos);
-    }
-  }, []);
+Ans:
+- Make form -> capture:true
 
-  // Update local storage whenever TODOs change
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-```
+# 10. Create a Modal which closes by clicking on Negative space (space outside the modal)
+
+<img src="image-6.png" width="600px" />
+
+# 11. Debouncing
+- Create a button UI and debounce as follows:
+- Show "Button Pressed <X> Times" every time button is pressed.
+- Increase "Triggered <Y> Times" count after 800ms of debounce

@@ -53,6 +53,92 @@ console.log(a);
 let a = 10;
 ```
 
+# Map, Filter, Reduce
+
+# Map
+- create new array from existing array
+
+```js
+    const arr = [1,3,5,7];
+    const mul = arr.map(num => num*2);
+    console.log(mul);
+
+    Array.prototype.myMap = function (cb){
+        let temp = [];
+        for(let i=0; i<this.length; i++){
+            temp.push(cb(this[i]));
+        }
+        return temp;
+    };
+
+    const mul1 = arr.myMap((num => num *2));
+    console.log(mul1);
+```
+
+# Filter
+- Takes each element from the array and perform the condition
+- If condition returns true, then corresponding element is push into the array
+- If false, then it doesnt push into the array
+
+```js
+    const arr = [1,3,5,7];
+    const great = arr.filter(num => num>3);
+    console.log(great);
+
+    Array.prototype.myFilter = function(cb){
+        let temp = [];
+        for(let i=0; i<this.length; i++){
+            if(cb(this[i], i, this)){
+                temp.push(this[i]);
+            }
+        }
+        return temp;
+    }
+
+    const great1 = arr.myFilter(num => num >3);
+    console.log(great1);
+```
+
+# Reduce
+- this method reduces the array of elements into one element
+
+```js
+const arr = [1,3,5,7];
+    const sum = arr.reduce((acc,sum) => {
+        return acc+sum;
+    },0);
+    console.log("sum - ", sum);
+
+    Array.prototype.myReduce = function (cb, initialValue){
+        let acc = initialValue;
+
+        for(let i=0; i<this.length; i++){
+            acc = acc ? cb(acc,this[i],i,this) : this[i]
+            
+        }
+        return acc;
+    }
+
+    const sum1 = arr.myReduce((acc,sum) => {
+        return acc+sum;
+    },0)
+    console.log("sum1 - ",sum1)
+```
+
+# Diff btw map() and forEach()
+
+- Map returns a new array, doesnt modify the original array
+- forEach doesnt returns an array, modifies a original array
+- we can do chaining on map (like filter or reuduce)
+
+
+
+
+
+
+
+
+
 # Synchronous vs Asynchornous
 - JS executes synchronous code first then Async code
 
@@ -257,7 +343,7 @@ Error in promise - Heyy I am from Another (we rejected the second)
 # Event Propagation
 - The sequence of the events occurring btw these
 
-Eg:
+- Eg:
 <img src="image-3.png" width="600px" />
 <img src="image-4.png" width="600px" />
 
@@ -281,7 +367,35 @@ Eg:
 
 # Event Delegation
 - Suppose we have 6 cards and a parent div
-- Instead of adding events to each card, we add the event to the parent
+- Instead of adding events (adding links in the example) to each card, we add the event to the parent
 
 <img src="image-5.png" width="600px" />
 
+
+# Throttling
+- infinite scrolling in Twitter
+- when we click the scrolling to the middle (eg: 500px of our webpage), it fetches many api calls and gives us results
+- dont make API call before 500ms
+
+# Debouncing
+- Searchbox in Flipkart
+- in searchbox it makes an API call whenever my keystroke reaches 400 ms
+- dont make API call before 400ms
+
+
+# LocalStorage
+
+```js
+  // Load TODOs from local storage on app startup
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
+  // Update local storage whenever TODOs change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+```
