@@ -129,9 +129,181 @@ const arr = [1,3,5,7];
 
 - Map returns a new array, doesnt modify the original array
 - forEach doesnt returns an array, modifies a original array
-- we can do chaining on map (like filter or reuduce)
+- we can do chaining on map (like filter or reduce)
 
+# Functions
 
+# Function Declaration/Definition/Statement
+```js
+function square(num){
+  return num * num
+}
+square();
+```
+# Function Expression
+- When storing the function inside a variable
+```js
+const square = function (num){
+  return num * num
+}
+square();
+```
+# Anonymous function
+- Function which has no name
+```js
+function (num){
+  return num * num
+}
+```
+# First Class Function
+- Functions which treated as a variable
+- Can call function inside another function
+```js
+    function square(num){
+        return num * num;
+    }
+    function displaySquare(fn){
+        console.log("Square is ", fn(5));
+    }
+    displaySquare(square);
+```
+# IIFE (Immediately Invoked Function Expression)
+- Executed immediately
+
+```js
+    (function square(num){
+        console.log(num * num);
+    })(5);
+```
+```js
+    (function square(x){
+        return function(y){
+            console.log(x);
+        }(2);
+    })(1);
+```
+Output: 1
+
+# Function Scope
+- Var doesnt have block scope
+- let has block scope
+- if var then
+```js
+    for(var i=0; i<5;i++){
+        setTimeout(function (){
+            console.log(i);
+        }, i*1000);
+    }
+```
+Output:
+5 5 5 5 5
+- If let
+```js
+    for(let i=0; i<5;i++){
+        setTimeout(function (){
+            console.log(i);
+        }, i*1000);
+    }
+```
+Output:
+0 1 2 3 4
+
+# Function Hoisting
+- Functions are hoisted globally (normal function)
+- Complete function are added to the scope
+
+```js
+    funName();
+    function funName(){
+        console.log("Greetings!")
+    }
+```
+Output:
+Greetings
+
+# Params vs Arguments
+```js
+function square(num){ //Params
+  console.log(num*num); 
+}
+square(5); //Args
+```
+
+# Spread vs Rest Operator
+```js
+    function square(num1,num2){
+        console.log(num1 * num2);
+    }
+    var arr = [5,6];
+    square(...arr); //spread
+```
+```js
+    function square(...nums){ //rest
+        console.log(nums);
+    }
+    var arr = [5,6];
+    square(...arr);
+```
+
+# Callback Function
+- Function passed into another function as arguments
+- Higher Order Function
+```js
+const message = function() {  
+    console.log("This message is shown after 3 seconds");
+}
+
+setTimeout(message, 3000);
+```
+
+# Arrow Function
+```js
+    const sum = (a,b) => {
+        console.log(a+b);
+    }
+    sum(2,3);
+```
+Regular function
+```js
+    const sum = function(a,b){
+        console.log(a+b);
+    }
+    sum(2,3);
+```
+# Diff btw Arrow and Regular?
+- Syntax
+- Implicit Return Keyword in arrow
+- Normal function should have return keyword if we are returning something
+```js
+    const sum = (a,b) => console.log(a+b);
+    sum(2,3);
+```
+- Arguments keyword in normal fn
+```js
+function arg(num1, num2){
+  console.log(arguments);
+}
+arg(5,6);
+```
+- arguments keyword not present in Arrow fn
+- This keyword
+```js
+    let user = {
+        username: "Revadi Sundaram",
+        fun1: () => {
+            console.log("Heyy "+ this.username)
+        },
+        fun2(){
+            console.log("Heyy "+ this.username)
+        },
+    }
+    user.fun1();
+    user.fun2();
+```
+Output:
+Hey undefined, Hey Revadi Sundaram
+- fun1 is a arrow function, here "this" points to the global object, so undefined
+- fun2 is regular function, here "this" points to the current, local object
 
 
 
