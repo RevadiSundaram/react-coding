@@ -305,6 +305,66 @@ Hey undefined, Hey Revadi Sundaram
 - fun1 is a arrow function, here "this" points to the global object, so undefined
 - fun2 is regular function, here "this" points to the current, local object
 
+# Closures
+- function which references variables to outer scope from inner scope
+- function bundled together along with its lexical environment
+```js
+    let/var username = "Revadi Sundaram";
+    function local(){
+        console.log(username);
+    }
+    local();
+```
+Output: Revadi Sundaram
+```js
+    function subscribe(){
+        var name="Revadi Sundaram";
+        function displayName(){
+            alert(name);
+        }
+        displayName();
+    }
+    subscribe();
+```
+Output: alert box - Revadi Sundaram
+- the function displayName forms the closure with lexical scope of parent function subscribe()
+```js
+    function subscribe(){
+        var name="Revadi Sundaram";
+        function displayName(){
+            console.log(name);
+        }
+       return displayName;
+    }
+    subscribe()(); //both calling are equal
+    var fun = subscribe();
+    fun();
+```
+# Closure Scope Chain
+- Every closure has three scopes local scope, outer fun scope, global scope
+```js
+// global scope
+const e = 10;
+function sum(a) {
+  return function (b) {
+    return function (c) {
+      // outer functions scope
+      return function (d) {
+        // local scope
+        return a + b + c + d + e;
+      };
+    };
+  };
+}
+
+console.log(sum(1)(2)(3)(4)); // 20
+```
+- The inner function with d param has access to its all outer function scopes, global scopes and local scope
+
+
+
+
+
 
 
 
