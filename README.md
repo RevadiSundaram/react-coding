@@ -361,10 +361,100 @@ console.log(sum(1)(2)(3)(4)); // 20
 ```
 - The inner function with d param has access to its all outer function scopes, global scopes and local scope
 
+# Currying
+- Currying is a function that takes one argument at a time and returns a new function expecting the next argument. It is a conversion of functions from callable as f(a,b,c)into callable as f(a)(b)(c).
+- Num of argument = num of function returning
 
+# Why should we use currying
+- To avoid passing same variable again and again
+- It divides one function into multiple functions so that one handles one set of responsibility.
+- Higher Order Function
 
+# Working
+- Currying is a function that takes multiple arguments as input. It transform the function into a number of functions where every function will accept one argument.
 
+```js
+function fun(a,b){
+        console.log(a,b)
+    }
+    // fun(5,6)
+    
+    function f(a){
+        return function (b){
+            return `${a} ${b}`
+        }
+    }
+    console.log(f(5)(6));
+```
+```js
+function sum(a){
+    return function(b){
+        return function(c){
+            return a+b+c
+        }
+    }
+}
+console.log(sum(2)(6)(1));
+```
+```js
+    function evaluate(operation){
+        return function(a){
+            return function(b){
+                    if(operation === "sum") return a+b;
+                    else if(operation === "multiply") return a*b;
+                    else if(operation === "divide") return a/b;
+                    else if(operation === "subtract") return a-b;
+                    else return "Invalid Operator"
+                }
+        }
+    }
 
+//    console.log(evaluate("multiply")(5)(6));
+    const mul = evaluate("multiply");
+    console.log(mul(5)(6));
+    console.log(mul(2)(3));
+```
+- So we can initialize the operator function once and we can call again and again
+
+# Infinite Currying => sum(1)(2)(3)....(n)
+```js
+    function add(a){
+        return function(b){
+            if(b) return add(a+b);
+            return a;
+        }
+    }
+    console.log(add(5)(2)(4)(8)());
+```
+
+# Currying vs Partial Application
+- Partial Application transforms a function into another function 
+- Mixing currying with partial
+
+```js
+    function add(a){
+        return function(b,c){
+            return a+b+c
+        }
+    }
+   const x = add(10);
+   console.log(x(5,6));
+   //or
+   console.log(add(10)(5,6))
+```
+
+# Manipulating DOM with currying
+
+<img src="image-7.png" width="600px" />
+<img src="image-8.png" width="600px" />
+
+- We are taking the selector and updating it with currying
+- We can update the name so many times
+
+# curry() Implementation
+- converts f(a,b,c) into f(a)(b)(c)
+
+# Objects
 
 
 
