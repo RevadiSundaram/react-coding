@@ -455,6 +455,53 @@ console.log(sum(2)(6)(1));
 - converts f(a,b,c) into f(a)(b)(c)
 
 # Objects
+- Objects are key value pairs in Js
+```js
+    const user={
+        name: "Revadi Sundaram",
+        age: 25,
+        "like this video": true,
+    };
+    user.name = "Revadi R S"; //Modifying the property
+    delete user.age; //deleting a property
+    console.log(user.name);
+    console.log(user["like this video"]);
+    delete user["like this video"];
+```
+- Dynamic key-value pairs
+```js
+    const property = "fullName";
+    const name = "Revadi Sundaram";
+
+    const user = {
+        [property] : name,
+    }
+    console.log(user);
+```
+- Looping through objects - forin
+```js
+const user = {
+    name: "Revadi Sundaram",
+    age: 25,
+    isAwesome: true
+}
+    for (each in user){
+        console.log(each);
+    }
+```
+# Duplicate keys
+```js
+  const obj = {
+    a: "one",
+    b: "two",
+    a: "three"
+  }
+  console.log(obj);
+```
+- If there are two keys with the same name, then the first one will be replaced
+
+
+
 
 
 
