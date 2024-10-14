@@ -2,15 +2,16 @@ import React from 'react'
 
 const InterviewQues = () => {
 
-  const a = {};
-  const b = {key: "b"};
-  const c = {key: "c"};
+  const user = {
+    name: "Renu",
+    age: 25
+  }
+  const strObj = JSON.stringify(user);
 
-  a[b] = 123; // a["[object Object]"] = 123
-  a[c] = 456; //a["[object Object]"] = 456
-  console.log(a);
-  console.log(a[b]);
+  localStorage.setItem("test", strObj); //setting the localStorage to test
 
+  console.log(JSON.parse(localStorage.getItem("test"))); //getting the localStorage from test
+  
 
   return (
     <div>InterviewQues</div>

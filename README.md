@@ -500,6 +500,49 @@ const user = {
 ```
 - If there are two keys with the same name, then the first one will be replaced
 
+# Object to String and String to Object
+```js
+  const user = {
+    name: "Renu",
+    age: 25
+  }
+  const strObj = JSON.stringify(user);
+  const toObj = JSON.parse(strObj);
+  console.log(toObj);
+```
+Common Usage:
+- while using local and session storage
+
+# LocalStorage
+```js
+  const user = {
+    name: "Renu",
+    age: 25
+  }
+  const strObj = JSON.stringify(user);
+
+  localStorage.setItem("test", strObj); //setting the localStorage to test
+
+  console.log(JSON.parse(localStorage.getItem("test"))); //getting the localStorage from test
+```
+
+# LocalStorage in TODO while loading the webpage
+
+```js
+  // Load TODOs from local storage on app startup
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
+  // Update local storage whenever TODOs change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
+```
+
 
 
 
@@ -751,20 +794,3 @@ Error in promise - Heyy I am from Another (we rejected the second)
 - in searchbox it makes an API call whenever my keystroke reaches 400 ms
 - dont make API call before 400ms
 
-
-# LocalStorage
-
-```js
-  // Load TODOs from local storage on app startup
-  useEffect(() => {
-    const storedTodos = JSON.parse(localStorage.getItem('todos'));
-    if (storedTodos) {
-      setTodos(storedTodos);
-    }
-  }, []);
-
-  // Update local storage whenever TODOs change
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  }, [todos]);
-```

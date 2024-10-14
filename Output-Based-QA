@@ -399,3 +399,6 @@ Output: 456
 
 - Object cannot be converted into a key unless it is a string
 - When it tried to assign 456 it overrides, so we got an output 456
+
+# JSON.stringify vs JSON.parse?
+
