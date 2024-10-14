@@ -543,6 +543,101 @@ Common Usage:
   }, [todos]);
 ```
 
+# Spread Operator with Objects
+```js
+ console.log([..."Lydia"]);
+ ```
+Output:
+- 'l','y','d','i','a'
+```js
+  const user = {
+    name: "Lydia",
+    age: 21
+  }
+  const admin = {
+    admin: true,
+    ...user
+  }
+  console.log(admin);
+```
+Output:
+- {admin: true, name: 'Lydia', age: 21}
+
+# Destructuring in Objects
+```js
+  let user = {
+    name: "Renu",
+    age: 25
+  }
+  const {name} = user; //destrucuring
+  console.log(name);
+```
+```js
+  let user = {
+    name: "Renu",
+    age: 25
+  }
+  const name = "Revadi Sundaram" //renaming
+  const {name: myName} = user; //destrucuring
+  console.log(myName); //Renu
+  console.log(name); //Revadi Sundaram
+```
+
+# Nested Objects
+```js
+  let user = {
+    name: "Renu",
+    age: 25,
+    fullName:{
+      first: "Revadi",
+      last: "Sundaram"
+    }
+  }
+  const {fullName: {first}} = user; //destrucuring
+  console.log(first); //Revadi
+```
+# Object Reference
+```js
+  let c = { greeting : "Hey!"};
+  let d;
+
+  d = c;
+  c.greeting = "Hello!";
+  console.log(c);
+  console.log(d);
+  console.log(d.greeting); //Hello!
+  // When assigning c to d, we are not assigning any properties and objects
+  // We are assigning the references from c to d
+  //So whatever we change in c, will affect d as well
+```
+```js
+  console.log({a: 1} == {a:1}); //false
+  console.log({a: 1} === {a:1}); //false
+```
+- Both are different objects, both have different reference space in memory
+# Shallow Copy vs Deep Copy
+- when one object holds the reference to another object - Shallow copy
+- when we completely clone an objects to another variable - Deep copy
+
+# Deep Clone
+```js
+  let user = {
+    name: "Revadi Sundaram",
+    age: 25
+  }
+  const objClone1 = Object.assign({}, user);
+  const objClone2 = {...user};
+  const objClone3 = JSON.parse(JSON.stringify(user));
+ 
+  console.log(objClone3);
+```
+- 3 ways to deep clone an object
+- Object.assign() - cannot clone nested objects, can clone functions
+- Spread Operator {...} - cannot clone nested objects, can clone functions
+- JSON.parse and JSON.stringify - can clone nested objects but cannot function
+
+# "this" Keyword
+
 
 
 

@@ -400,5 +400,119 @@ Output: 456
 - Object cannot be converted into a key unless it is a string
 - When it tried to assign 456 it overrides, so we got an output 456
 
-# JSON.stringify vs JSON.parse?
+# Output?
+```js
+ console.log([..."Lydia"]);
+ ```
+Output:
+- 'l','y','d','i','a'
 
+# Output?
+```js
+  const user = {
+    name: "Lydia",
+    age: 21
+  }
+  const admin = {
+    admin: true,
+    ...user
+  }
+  console.log(admin);
+```
+Output: 
+- {admin: true, name: 'Lydia', age: 21}
+
+# Output?
+```js
+  const settings = {
+    username: "Renu",
+    level: 19,
+    health: 90
+  };
+  const data = JSON.stringify(settings, ["level", "health"]); //If we give specific properties into an array, JSON will only stringify those
+  console.log(settings);
+  console.log(data);
+```
+Output:
+- {"level":19,"health":90}
+
+# Output?
+```js
+  const shape = {
+    radius: 10,
+    diameter(){
+      return this.radius * 2;
+    },
+    perimeter: () => 2* Math.PI*this.radius,
+  };
+  console.log(shape.diameter()); //20 - Regular Function "this" points to local object
+  console.log(shape.perimeter()); //NaN - Arrow fun "this" points to global object
+  //since there is no global object called radius, it has undefined, we are calculating undefined so NaN
+```
+# Whats wrong?
+```js
+  function getItems(fruitList,...args, favFruit,){ //rest paramter should be last in param list
+    return [fruitList, ...args, favFruit] //spread operator can be used in between
+  }
+  console.log(getItems(["banana","apple"],"pear","orange"));
+```
+Solution:
+```js
+  function getItems(fruitList, favFruit,...args){ //rest paramter should be last in param list
+    return [fruitList, ...args, favFruit] //spread operator can be used in between
+  }
+  console.log(getItems(["banana","apple"],"pear","orange"));
+```
+
+# Output:
+```js
+  let person = {name: "Renu"};
+  const members= [person]; //members[0] = {name:"Renu"}
+  person = null;
+  console.log(members)
+```
+Output: 
+- 0: {name: 'Renu'}
+
+```js
+  let person = {name: "Renu"};
+  const members= [person]; //members[0] = {name:"Renu"}
+  person.name = null;
+  console.log(members); // 0:{name:null}
+```
+# Output?
+```js
+  const value = {number: 10};
+  const multiply = (x={...value}) => { //default assigning if no parameters
+    console.log(value);
+    console.log(x.number);
+    console.log((x.number *= 2))
+  }
+  multiply(); //20
+  multiply(); //20
+  multiply(value); //20
+  multiply(value); //40
+  //while calling 3 and 4, it will be multiply(x){}
+  //since 3rd call  has modified the number to 20, 4th call will be 40
+```
+# Output?
+```js
+function calcAge(person){
+  person.age = 25; //modifying will affect the reference
+  person = {       //Reassigning will not affect the reference
+    name: "John",
+    age: 50
+  };
+  return person;
+}
+const personObj1 = {
+  name: "Alex",
+  age: 30,
+}
+const personObj2 = calcAge(personObj1);
+console.log(personObj1);
+console.log(personObj2);
+```
+Output:
+- personObj1 - {name: 'Alex', age: 25}
+- personObj2 - {name: 'John', age: 50}
