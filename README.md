@@ -636,7 +636,129 @@ Output:
 - Spread Operator {...} - cannot clone nested objects, can clone functions
 - JSON.parse and JSON.stringify - can clone nested objects but cannot function
 
+# Implicit and Explicit Binding
+- This - Implicit
+- Call, Bind, Apply - Explicit
+
 # "this" Keyword
+- this is implicit binding while accessing properties of objects
+- used to reference objects
+
+# Global Scope
+```js
+  this.a = 5;
+  console.log(this.a); //5
+  console.log(this); //window object
+```
+```js
+
+  this.a = 5;
+  const getParam = () => {
+    console.log(this.a);
+  }
+  function getParams() {
+    console.log(this.a);
+  }
+  getParam(); //5
+  getParams(); //5
+  ```
+
+# Regular Functions
+```js
+  let user = {
+    name: "Renu",
+    age: 25,
+    childObj:{
+      newName: "Revadi Sundaram",
+      getDetails(){
+        console.log(this.newName, " and ", this.name)
+      }
+    },
+    getName(){
+      console.log(this.name);
+    }
+  }
+  user.getName(); //Renu 
+  user.childObj.getDetails(); //Revadi Sundaram and undefined
+  //Normal function "this" can only acess immediate parent
+```
+# Arrow Function
+```js
+  let user = {
+    name: "Renu",
+    age: 25,
+    getDetails: () => {
+      console.log(this.name);
+    }
+  }
+  user.getDetails(); //undefined 
+  //Arrow function this points to global window object
+```
+- But if we have arrow function inside regular function,
+```js
+  let user = {
+    name: "Renu",
+    age: 25,
+    getDetails(){
+      const nestedArrow = () => console.log(this.name);
+      nestedArrow();
+    }
+  }
+  user.getDetails(); //Renu
+```
+# Class and Constructor
+```js
+class user{
+    constructor(n){
+        this.name = n;
+    }
+    getName(){
+        console.log(this.name);
+    }
+}
+const User = new user("Renu");
+User.getName();
+```
+- in class, this points to the constructor
+
+# Callback function
+```js
+  const user = {
+    name: "Revadi Sundaram",
+    logMessage(){
+      console.log(this.name)
+    }
+  }
+  setTimeout(user.logMessage,1000); //nothing
+```
+- in callback function, this points to window object
+- to fix this invoke the method inside a function
+```js
+  const user = {
+    name: "Revadi Sundaram",
+    logMessage(){
+      console.log(this.name)
+    }
+  }
+  setTimeout(function(){
+    user.logMessage(); //Revadi Sundaram after 1 sec
+  },1000);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
