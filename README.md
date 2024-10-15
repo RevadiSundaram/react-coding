@@ -744,6 +744,88 @@ User.getName();
     user.logMessage(); //Revadi Sundaram after 1 sec
   },1000);
 ```
+# Call, Bind, Apply
+- Explicit Binding
+# Call
+```js
+  var obj = {
+    name: "Renu"
+  }
+  function sayHello(){
+    return "Hello "+this.name;
+  }
+  console.log(sayHello.call(obj));  //Hello Renu
+```
+- .call() available to all functions in js
+- to use the object that we want to reference to
+```js
+  var obj = {
+    name: "Renu"
+  }
+  function sayHello(age){
+    return "Hello "+this.name + " and age is "+age;
+  }
+  console.log(sayHello.call(obj,25)); //Hello Renu and age is 25
+```
+# Apply
+- Same as call
+- But takes arguments in form as array
+```js
+  var obj = {
+    name: "Renu"
+  }
+  function sayHello(age, job){
+    return "Hello "+this.name + " and age is "+age + " and is "+job;
+  }
+  console.log(sayHello.apply(obj,[25, "SE"]));
+```
+# Bind
+- it provides us reusable function
+```js
+  var obj = {
+    name: "Renu"
+  }
+  function sayHello(age, job){
+    return "Hello "+this.name + " and age is "+age + " and is "+job;
+  }
+  const bindFunc = sayHello.bind(obj);
+  console.log(bindFunc(25, "SE"));
+```
+# Appending an array
+- Using apply
+```js
+const array = ["a","b"];
+const elements = [0,1,2];
+//array.push(elements); //this will push all elements at once, we dont want that, 
+//we want to push every element
+array.push.apply(array, elements);
+console.log(array); //['a', 'b', 0, 1, 2]
+```
+# Call with Arrow Fun
+```js
+const age = 10;
+var person = {
+  name: "Renu",
+  age: 25,
+    getAge: function(){
+    console.log(this.age);
+  },
+  getAgeArrow: () => console.log(this.age),
+
+}
+var person2 = {age:24};
+person.getAge.call(person2); //24
+person.getAgeArrow.call(person2) //undefined
+```
+- Arrow functions dont behave differently with call, bind, apply
+- It behaves the same way
+- here this points to window object
+
+# Object Oriented Programming (OOP)
+
+
+
+
 
 
 

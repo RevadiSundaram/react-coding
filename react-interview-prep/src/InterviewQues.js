@@ -1,22 +1,19 @@
-import React from 'react'
+
 
 const InterviewQues = () => {
 
-  const calc = {
-    total: 0,
-    add(a){
-      this.total += a;
-      return this; //we are writing this because we are calling all the methods which are attached to this
-    },
-    subtract(a){
-      this.total -= a;
-    },
-    multiply(a){
-      this.total *= a;
-    }
+const age = 10;
+var person = {
+  name: "Renu",
+  age: 25,
+  getAgeArrow: () => console.log(this.age),
+  getAge: function(){
+    console.log(this.age);
   }
-  const result = calc.add(10).multiply(5).subtract(30).add(10);
-  console.log(result.total);
+}
+var person2 = {age:24};
+person.getAge().call(person2);
+person.getAgeArrow();
 
 
   return (

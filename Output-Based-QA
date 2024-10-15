@@ -643,3 +643,123 @@ console.log(user.farewell()); //Hey,
   const result = calc.add(10).multiply(5).subtract(30).add(10);
   console.log(result.total);
 ```
+# Output?
+```js
+  const person = { name: "Renu"};
+  function sayHi(age){
+    return `${this.name} is ${age}`
+  }
+  console.log(sayHi.call(person, 25)); //Renu is 25
+  console.log(sayHi.bind(person, 25)); //gives us function to execute later on
+  const bindF = sayHi.bind(person, 25);
+  console.log(bindF());
+```
+# Output?
+```js
+  const age = 10;
+  var person = {
+    name: "Renu",
+    age: 20,
+    getAge: function(){
+      return this.age
+    }
+  }
+  var person2 = {age:25};
+  console.log(person.getAge.call(person2)); //25 it is referring to person2 Obj
+  console.log(person.getAge.apply(person2)); //25
+  console.log(person.getAge.bind(person2)()); //25
+```
+# Output?
+```js
+  var status = "Cool";
+  setTimeout(() => {
+    const status = "Love";
+    const data = {
+      status: "Avacado",
+      getStatus: function(){
+        return this.status
+      }
+    }
+    console.log(data.getStatus()); //Avacado
+    console.log(data.getStatus.call(this)); //Cool
+    //Bcoz setTimeout is pointing to global object, so "this" will point to Cool
+  }, 0);
+```
+# Call printAnimals such that it prinnts all animals in object
+```js
+ const animals = [
+    {species: "Lion", name: "King"},
+    {species: "Whale", name: "Queen"}
+  ]
+  function printAnimals(i){
+    this.print = function(){
+      console.log("#"+i+" "+this.species+": "+this.name)
+    }
+    this.print();
+  }
+```
+```js
+  for(let i=0; i<animals.length; i++){
+    printAnimals.call(animals[i],i)
+  }
+```
+# Find Min and Max
+```js
+  const numbers = [5,6,2,3,4,7];
+  console.log(Math.max.apply(null, numbers)); //7
+  console.log(Math.min.apply(null,numbers)); //2
+```
+# Output?
+```js
+  function f(){
+    console.log(this);
+  }
+  let user = {
+    g: f.bind(null)
+  }
+  user.g(); //window object
+```
+# Output? Bind Chaining
+```js
+  function f(){
+    console.log(this.name);
+  }
+  f = f.bind({name: "John"}).bind({name: "Ann"})
+  f(); //John
+```
+- Once the function has binded to the object, it will always be binded to that
+- Bind chaining doesn't exist
+# Fix the code
+```js
+  function checkPassword(success, failed){
+    let password = "jhkAS";
+    if(password === "Renu") success();
+    else failed();
+  }
+  let user = {
+    name: "Revadi Sundaram",
+    loginSuccessful(){
+      console.log(`${this.name} logged in`)
+    },
+    loginFailed(){
+      console.log(`${this.name} failed to log in`)
+    }
+  }
+  //checkPassword(user.loginSuccessful, user.loginFailed) //undefined failed to log in
+  checkPassword(user.loginSuccessful.bind(user), user.loginFailed.bind(user)); //Revadi Sundaram failed to login
+```
+# Same with single value
+```js
+  function checkPassword(success, fail){
+    let password = "hgjhkj";
+    if(password === "Renu") success();
+    else fail();
+  }
+  let user = {
+    name: "Revadi Sundaram",
+    login(result){
+      console.log(this.name+ (result ? " login successfull ": " login failed "));
+    }
+  }
+  checkPassword(user.login.bind(user,true), user.login.bind(user, false));
+```
