@@ -822,8 +822,98 @@ person.getAgeArrow.call(person2) //undefined
 - here this points to window object
 
 # Object Oriented Programming (OOP)
+- class keyword created in EcmaScript 2015
+- When we create a class, we should write constructor
+- that is the first thing that will be called
+```js
+class Person {
+    constructor(name, age){
+        this.name = name; 
+        this.age = age; 
+        //by writing this, we make them accessible throughtout the class
+    }
+    getAge = () =>{
+        return this.age
+    }
+    getName = () => {
+        return this.name
+    }
+}
+let person1 = new Person("Renu",25);//creating instance of the class
+let person2 = new Person("Balaji",26)
+console.log(person2.getAge())
+console.log(person1.getName())
+```
+```js
+class Person {
+    constructor(name, age){
+        this.name = name; 
+        this.age = age; 
+        //by writing this, we make them accessible throughtout the class
+    }
+    getAge = () =>{
+        return this.age
+    }
+    getName = () => {
+        return this.name
+    }
+}
+let person1 = new Person("Renu",25);//creating instance of the class
+let person2 = new Person("Balaji",26)
 
 
+class House{
+    constructor(address, price, residents){
+        this.address = address;
+        this.price = price;
+        this.residents = residents;
+    }
+    getAddress = () => {
+        return this.address
+    }
+    getPrice = () => {
+        return this.price
+    }
+    getResidents = () => {
+        return this.residents
+    }
+    addResident = (resident) =>{
+        this.residents.push(resident);
+    }
+}
+
+let house = new House("hgiaiufhoidf", 280000,[person1,person2]);
+
+let person3 = new Person("Swathi",31);
+house.addResident(person3);
+console.log(house.getResidents());
+```
+Output: 
+```js
+[
+  Person {
+    getAge: [Function: getAge],
+    getName: [Function: getName],
+    name: 'Renu',
+    age: 25
+  },
+  Person {
+    getAge: [Function: getAge],
+    getName: [Function: getName],
+    name: 'Balaji',
+    age: 26
+  },
+   Person {
+    getAge: [Function: getAge],
+    getName: [Function: getName],
+    name: 'Swathi',
+    age: 31
+  }
+]
+```
+# 4 Pillars of OOPs
+- Abstraction
+- 
 
 
 
