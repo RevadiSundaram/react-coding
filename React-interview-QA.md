@@ -42,6 +42,14 @@
 - Props Drilling
 - React Context 
 
+# React Concept which you have to study most
+
+- [ ] useRef, useMemo, useCallback
+- [ ] Custom Hooks
+- [ ] React Context
+- [ ] React Router
+- [ ] Redux Toolkit
+
 
 # Ref
 - Not causing rerender

@@ -1,4 +1,6 @@
 import './App.css';
+import Main from './Context/Main';
+
 // import Main from './DarkLight/Main';
 // import InterviewQues from './InterviewQues';
 // import Mock from './Dropdown.js/Mock';
@@ -12,7 +14,8 @@ import './App.css';
 // import Page from './Pagination.js/Page';
 // import Main from './Quiz/Main';
 // import Main from './QuizApp/Main';
-import Reference from './Reference';
+// import Reference from './Reference';
+
 
 function App() {
   return (
@@ -28,7 +31,8 @@ function App() {
       {/* <Mock /> */}
       {/* <Main /> */}
       {/* <InterviewQues /> */}
-      <Reference />
+      {/* <Reference /> */}
+      <Main />
       
     </div>
   );
