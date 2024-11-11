@@ -1,5 +1,6 @@
 import './App.css';
-import Main from './Context/Main';
+// import Main from './Context/Main';
+import Main from './Cart/Main';
 
 // import Main from './DarkLight/Main';
 // import InterviewQues from './InterviewQues';
@@ -32,8 +33,9 @@ function App() {
       {/* <Main /> */}
       {/* <InterviewQues /> */}
       {/* <Reference /> */}
-      <Main />
-      
+      {/* <Main />
+       */}
+       <Main />
     </div>
   );
 }
